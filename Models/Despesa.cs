@@ -13,7 +13,8 @@ namespace Controle_Financeiro.Models
         public double Valor_Despesa { get; set; }
         [Required]
         public DateTime Data_Despesa { get; set; }
-
-        public string Categoria { get; set; }
+    
+        public string NomeCategoria { get; set; }
+        public virtual Categoria Categoria { get; set; }
     }
 }

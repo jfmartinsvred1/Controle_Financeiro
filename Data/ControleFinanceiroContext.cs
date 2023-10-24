@@ -12,5 +12,6 @@ namespace Controle_Financeiro.Data
 
         public DbSet<Receita> Tb_Receitas { get; set; }
         public DbSet<Despesa> Tb_Despesas { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
     }
 }

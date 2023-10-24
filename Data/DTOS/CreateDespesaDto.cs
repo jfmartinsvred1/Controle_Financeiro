@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Controle_Financeiro.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Controle_Financeiro.Data.DTOS
 {
@@ -10,6 +11,6 @@ namespace Controle_Financeiro.Data.DTOS
         public double Valor_Despesa { get; set; }
         [Required]
         public DateTime Data_Despesa { get; set; }
-        public string Categoria { get; set; }
+        public string NomeCategoria { get; set; }
     }
 }

@@ -1,9 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Controle_Financeiro.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace Controle_Financeiro.Data.DTOS
 {
     public class ReadDespesaDto
     {
+        [Key]
+        [Required]
+        public int Id_Despesa { get; set; }
         [Required]
         public string Descricao_Despesa { get; set; }
         [Required]
@@ -11,6 +15,6 @@ namespace Controle_Financeiro.Data.DTOS
         [Required]
         public DateTime Data_Despesa { get; set; }
 
-        public string Categoria { get; set; }
+        public string NomeCategoria { get; set; }
     }
 }

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ControleFinanceiro.Migrations
 {
     /// <inheritdoc />
-    public partial class initial : Migration
+    public partial class newDb : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -24,7 +24,9 @@ namespace ControleFinanceiro.Migrations
                     DescricaoDespesa = table.Column<string>(name: "Descricao_Despesa", type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ValorDespesa = table.Column<double>(name: "Valor_Despesa", type: "double", nullable: false),
-                    DataDespesa = table.Column<DateTime>(name: "Data_Despesa", type: "datetime(6)", nullable: false)
+                    DataDespesa = table.Column<DateTime>(name: "Data_Despesa", type: "datetime(6)", nullable: false),
+                    Categoria = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4")
                 },
                 constraints: table =>
                 {

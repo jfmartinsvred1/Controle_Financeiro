@@ -3,6 +3,7 @@ using System;
 using Controle_Financeiro.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,25 +11,16 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleFinanceiro.Migrations
 {
     [DbContext(typeof(ControleFinanceiroContext))]
-    partial class ControleFinanceiroContextModelSnapshot : ModelSnapshot
+    [Migration("20231023235801_newDb")]
+    partial class newDb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
-
-            modelBuilder.Entity("Controle_Financeiro.Models.Categoria", b =>
-                {
-                    b.Property<string>("NomeCategoria")
-                        .HasMaxLength(15)
-                        .HasColumnType("varchar(15)");
-
-                    b.HasKey("NomeCategoria");
-
-                    b.ToTable("Categorias", (string)null);
-                });
 
             modelBuilder.Entity("Controle_Financeiro.Models.Despesa", b =>
                 {
@@ -36,8 +28,9 @@ namespace ControleFinanceiro.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<string>("CategoriaNomeCategoria")
-                        .HasColumnType("varchar(15)");
+                    b.Property<string>("Categoria")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.Property<DateTime>("Data_Despesa")
                         .HasColumnType("datetime(6)");
@@ -46,18 +39,12 @@ namespace ControleFinanceiro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("NomeCategoria")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<double>("Valor_Despesa")
                         .HasColumnType("double");
 
                     b.HasKey("Id_Despesa");
 
-                    b.HasIndex("CategoriaNomeCategoria");
-
-                    b.ToTable("Tb_Despesas", (string)null);
+                    b.ToTable("Tb_Despesas");
                 });
 
             modelBuilder.Entity("Controle_Financeiro.Models.Receita", b =>
@@ -78,21 +65,7 @@ namespace ControleFinanceiro.Migrations
 
                     b.HasKey("Id_Receita");
 
-                    b.ToTable("Tb_Receitas", (string)null);
-                });
-
-            modelBuilder.Entity("Controle_Financeiro.Models.Despesa", b =>
-                {
-                    b.HasOne("Controle_Financeiro.Models.Categoria", "Categoria")
-                        .WithMany("Despesas")
-                        .HasForeignKey("CategoriaNomeCategoria");
-
-                    b.Navigation("Categoria");
-                });
-
-            modelBuilder.Entity("Controle_Financeiro.Models.Categoria", b =>
-                {
-                    b.Navigation("Despesas");
+                    b.ToTable("Tb_Receitas");
                 });
 #pragma warning restore 612, 618
         }

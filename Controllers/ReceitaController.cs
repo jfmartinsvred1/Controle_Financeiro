@@ -88,7 +88,34 @@ namespace Controle_Financeiro.Controllers
             _context.SaveChanges();
             return Ok("Receita deletada com sucesso!");
         }
-        
+        [HttpGet("/receita/descricao={desc}")]
+        public IEnumerable<ReadReceitaDto> GetReceitaPorDesc(string desc)
+        {
+            var receitas = _context.Tb_Receitas;
+            List<ReadReceitaDto> list= new List<ReadReceitaDto>();
+            foreach(var receita in receitas)
+            {
+                if (receita.Descricao_Receita.Contains(desc))
+                {
+                    list.Add(_mapper.Map<ReadReceitaDto>(receita));
+                }
+            }
+            return list;
+        }
+        [HttpGet("/receita/{ano}/{mes}")]
+        public IEnumerable<ReadReceitaDto> GetReceitaPorMesEAno(int ano,int mes)
+        {
+            var list= new List<ReadReceitaDto>();
+            var receitas= _context.Tb_Receitas;
+            foreach(var receita in receitas)
+            {
+                if(receita.Data_Receita.Month== mes && receita.Data_Receita.Year == ano)
+                {
+                    list.Add(_mapper.Map<ReadReceitaDto>(receita));
+                }
+            }
+            return list;
+        }
 
     }
 

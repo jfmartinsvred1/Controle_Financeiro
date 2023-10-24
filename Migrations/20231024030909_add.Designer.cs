@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ControleFinanceiro.Migrations
 {
     [DbContext(typeof(ControleFinanceiroContext))]
-    [Migration("20231022212732_initial")]
-    partial class initial
+    [Migration("20231024030909_add")]
+    partial class add
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -22,11 +22,26 @@ namespace ControleFinanceiro.Migrations
                 .HasAnnotation("ProductVersion", "7.0.2")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+            modelBuilder.Entity("Controle_Financeiro.Models.Categoria", b =>
+                {
+                    b.Property<string>("NomeCategoria")
+                        .HasMaxLength(15)
+                        .HasColumnType("varchar(15)");
+
+                    b.HasKey("NomeCategoria");
+
+                    b.ToTable("Categorias");
+                });
+
             modelBuilder.Entity("Controle_Financeiro.Models.Despesa", b =>
                 {
                     b.Property<int>("Id_Despesa")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
+
+                    b.Property<string>("CategoriaNomeCategoria")
+                        .IsRequired()
+                        .HasColumnType("varchar(15)");
 
                     b.Property<DateTime>("Data_Despesa")
                         .HasColumnType("datetime(6)");
@@ -35,10 +50,16 @@ namespace ControleFinanceiro.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<string>("NomeCategoria")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<double>("Valor_Despesa")
                         .HasColumnType("double");
 
                     b.HasKey("Id_Despesa");
+
+                    b.HasIndex("CategoriaNomeCategoria");
 
                     b.ToTable("Tb_Despesas");
                 });
@@ -62,6 +83,22 @@ namespace ControleFinanceiro.Migrations
                     b.HasKey("Id_Receita");
 
                     b.ToTable("Tb_Receitas");
+                });
+
+            modelBuilder.Entity("Controle_Financeiro.Models.Despesa", b =>
+                {
+                    b.HasOne("Controle_Financeiro.Models.Categoria", "Categoria")
+                        .WithMany("Despesas")
+                        .HasForeignKey("CategoriaNomeCategoria")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Categoria");
+                });
+
+            modelBuilder.Entity("Controle_Financeiro.Models.Categoria", b =>
+                {
+                    b.Navigation("Despesas");
                 });
 #pragma warning restore 612, 618
         }

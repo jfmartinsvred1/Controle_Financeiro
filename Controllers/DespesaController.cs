@@ -3,6 +3,7 @@ using Controle_Financeiro.Data.DTOS;
 using Controle_Financeiro.Data;
 using Controle_Financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace Controle_Financeiro.Controllers
 {
@@ -27,8 +28,8 @@ namespace Controle_Financeiro.Controllers
             p.Data_Despesa.Month == despesa.Data_Despesa.Month);
             if (tentativa.Count() == 0)
             {
-                var cat = RetornaCategoria(despesa.Categoria);
-                despesa.Categoria = cat;
+                var cat = RetornaCategoria(despesa.NomeCategoria);
+                despesa.NomeCategoria = cat;
                 _context.Tb_Despesas.Add(despesa);
                 _context.SaveChanges();
                 return Ok("Despesa adicionada com sucesso!");
@@ -43,8 +44,9 @@ namespace Controle_Financeiro.Controllers
 
         public IEnumerable<ReadDespesaDto> GetDespesa()
         {
-            return _mapper.Map<List<ReadDespesaDto>>(_context.Tb_Despesas);
-
+            var context = _context.Tb_Despesas;
+            var despesas=_mapper.Map<List<ReadDespesaDto>>(context);
+            return despesas;
         }
 
         [HttpGet("{id}")]
@@ -105,38 +107,38 @@ namespace Controle_Financeiro.Controllers
             }
             return  _mapper.Map<List<ReadDespesaDto>>(despesasRetorna);
         }
+        [HttpGet("/despesa/{ano}/{mes}")]
+        public IEnumerable<ReadDespesaDto> GetDespesasPorAnoEMes(int ano, int mes) 
+        {
+            var list=new List<ReadDespesaDto>();
+            var listDespesasDb = _context.Tb_Despesas;
+            foreach(var despesas in listDespesasDb)
+            {
+                if(despesas.Data_Despesa.Month==mes&&despesas.Data_Despesa.Year==ano)
+                {
+                    list.Add(_mapper.Map<ReadDespesaDto>(despesas));
+                }
+            }
+            return list;
+        }
         internal string RetornaCategoria(string categoria)
         {
-            
-                string result = "";
-                switch(categoria.ToUpper())
+            var cat = _context.Categorias;
+            var nomeReturn = "";
+            foreach(var c in cat)
+            {
+                if (c.NomeCategoria.ToUpper() == categoria.ToUpper())
                 {
-                    case "ALIMENTAÇÃO":
-                        result = "Alimentação";
-                        break;
-                    case "SÁUDE":
-                        result = "Saúde";
-                        break;
-                    case "MORADIA":
-                        result = "Moradia";
-                        break;
-                    case "TRANSPORTE":
-                        result = "Transporte";
-                        break;
-                    case "EDUCAÇÃO":
-                        result = "Educação";
-                        break;
-                    case "LAZER":
-                        result = "Lazer";
-                        break;
-                    case "IMPREVISTOS":
-                        result = "Imprevistos";
-                        break;
-                    default:
-                        result = "Outros";
-                        break;    
+                    nomeReturn= c.NomeCategoria;
                 }
-                return result;
+            }
+            if(nomeReturn != "")
+            {
+                return nomeReturn;
+            }
+            return "Outros";
+            
+
         }
 
     }
