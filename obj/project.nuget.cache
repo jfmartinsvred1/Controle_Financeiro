@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Di5Vupr9y4dP7vM0ZcShBpbCjk5RQdSUGR7diwfjFAGsPZ4DWvTbB77FdsIcwi9Cvex5ZSCjUQ/ZtqLc4w37Rw==",
+  "dgSpecHash": "g2PDz11LDKBipgEXf5qAzL5EHvczDcxWY9rrU49LwWBbxEMsLde7aFt+PtK6sk1jb8uRLNnUpDFnq61CfJJiuw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Joao\\Desktop\\Projetos\\KIT_RESENHA\\Controle_Financeiro\\Controle_Financeiro.csproj",
+  "projectFilePath": "C:\\Users\\Joao\\Desktop\\Projetos\\ALURA_CHALLENGES\\Controle_Financeiro\\Controle_Financeiro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Joao\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
