@@ -19,12 +19,18 @@ namespace Controle_Financeiro.Controllers
             this._usuarioService = cadastroService;
         }
 
-        [HttpPost]
+        [HttpPost("cadastro")]
 
         public async Task<IActionResult> CadastraUsurio(CreateUsuarioDto dto)
         {
             await _usuarioService.Cadastra(dto);
             return Ok("Usuário Cadastrado Com Sucesso!");
+        }
+        [HttpPost("login")]
+        public async Task<IActionResult> LoginAsync(LoginUsuarioDto dto)
+        {
+           var token =  await _usuarioService.Login(dto);
+            return Ok(token);
         }
     }
 }

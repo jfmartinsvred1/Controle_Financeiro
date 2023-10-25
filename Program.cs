@@ -1,6 +1,7 @@
 using Controle_Financeiro.Data;
 using Controle_Financeiro.Models;
 using Controle_Financeiro.Services.DespesaService;
+using Controle_Financeiro.Services.TokenService;
 using Controle_Financeiro.Services.UsuarioService;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -27,6 +28,7 @@ builder.Services.
     AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<DespesaService>();
+builder.Services.AddScoped<TokenServices>();
 
 var app = builder.Build();
 
