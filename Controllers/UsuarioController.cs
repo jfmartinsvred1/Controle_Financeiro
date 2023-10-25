@@ -12,18 +12,18 @@ namespace Controle_Financeiro.Controllers
     [Route("[controller]")]
     public class UsuarioController:ControllerBase
     {
-        private CadastroService cadastroService;
+        private UsuarioService _usuarioService;
 
-        public UsuarioController(CadastroService cadastroService)
+        public UsuarioController(UsuarioService cadastroService)
         {
-            this.cadastroService = cadastroService;
+            this._usuarioService = cadastroService;
         }
 
         [HttpPost]
 
         public async Task<IActionResult> CadastraUsurio(CreateUsuarioDto dto)
         {
-            await cadastroService.Cadastra(dto);
+            await _usuarioService.Cadastra(dto);
             return Ok("Usuário Cadastrado Com Sucesso!");
         }
     }

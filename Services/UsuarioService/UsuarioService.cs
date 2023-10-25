@@ -5,12 +5,12 @@ using Microsoft.AspNetCore.Identity;
 
 namespace Controle_Financeiro.Services.UsuarioService
 {
-    public class CadastroService
+    public class UsuarioService
     {
         private IMapper _mapper;
         private UserManager<Usuario> _userManager;
 
-        public CadastroService(UserManager<Usuario> userManager, IMapper mapper)
+        public UsuarioService(UserManager<Usuario> userManager, IMapper mapper)
         {
             _userManager = userManager;
             _mapper = mapper;

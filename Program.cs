@@ -25,7 +25,7 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.
     AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<CadastroService>();
+builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<DespesaService>();
 
 var app = builder.Build();
