@@ -1,6 +1,7 @@
 using Controle_Financeiro.Authorization;
 using Controle_Financeiro.Data;
 using Controle_Financeiro.Models;
+using Controle_Financeiro.Services;
 using Controle_Financeiro.Services.DespesaService;
 using Controle_Financeiro.Services.TokenService;
 using Controle_Financeiro.Services.UsuarioService;
@@ -59,6 +60,8 @@ builder.Services.
     AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<UsuarioService>();
 builder.Services.AddScoped<DespesaService>();
+builder.Services.AddScoped<ReceitaService>();
+builder.Services.AddScoped<ResumoService>();    
 builder.Services.AddScoped<TokenServices>();
 
 

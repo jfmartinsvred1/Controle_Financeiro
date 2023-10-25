@@ -4,8 +4,9 @@ using Controle_Financeiro.Data;
 using Controle_Financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Controle_Financeiro.Services.DespesaService;
 using Microsoft.AspNetCore.Authorization;
+using Controle_Financeiro.Services;
+using Controle_Financeiro.Services.DespesaService;
 
 namespace Controle_Financeiro.Controllers
 {
