@@ -1,9 +1,10 @@
 ﻿using Controle_Financeiro.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
 namespace Controle_Financeiro.Data
 {
-    public class ControleFinanceiroContext:DbContext
+    public class ControleFinanceiroContext:IdentityDbContext<Usuario>
     {
         public ControleFinanceiroContext(DbContextOptions<ControleFinanceiroContext> opts): base (opts) 
         {

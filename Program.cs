@@ -1,4 +1,8 @@
 using Controle_Financeiro.Data;
+using Controle_Financeiro.Models;
+using Controle_Financeiro.Services.DespesaService;
+using Controle_Financeiro.Services.UsuarioService;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
@@ -9,6 +13,10 @@ var connectionString = (builder.Configuration.GetConnectionString("ControleFinan
 
 builder.Services.AddDbContext<ControleFinanceiroContext>(opts => opts.UseMySql(connectionString,ServerVersion.AutoDetect(connectionString)));
 
+builder.Services.AddIdentity<Usuario, IdentityRole>().
+    AddEntityFrameworkStores<ControleFinanceiroContext>().
+    AddDefaultTokenProviders() ;
+
 builder.Services.AddControllers().AddNewtonsoftJson
     (opts => opts.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -17,6 +25,8 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.
     AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddScoped<CadastroService>();
+builder.Services.AddScoped<DespesaService>();
 
 var app = builder.Build();
 

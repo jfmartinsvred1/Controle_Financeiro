@@ -1,0 +1,30 @@
+﻿using AutoMapper;
+using Controle_Financeiro.Data;
+using Controle_Financeiro.Data.DTOS;
+using Controle_Financeiro.Models;
+using Controle_Financeiro.Services.UsuarioService;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
+
+namespace Controle_Financeiro.Controllers
+{
+    [ApiController]
+    [Route("[controller]")]
+    public class UsuarioController:ControllerBase
+    {
+        private CadastroService cadastroService;
+
+        public UsuarioController(CadastroService cadastroService)
+        {
+            this.cadastroService = cadastroService;
+        }
+
+        [HttpPost]
+
+        public async Task<IActionResult> CadastraUsurio(CreateUsuarioDto dto)
+        {
+            await cadastroService.Cadastra(dto);
+            return Ok("Usuário Cadastrado Com Sucesso!");
+        }
+    }
+}

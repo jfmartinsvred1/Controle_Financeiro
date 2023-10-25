@@ -4,6 +4,7 @@ using Controle_Financeiro.Data;
 using Controle_Financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Controle_Financeiro.Services.DespesaService;
 
 namespace Controle_Financeiro.Controllers
 {
@@ -13,31 +14,20 @@ namespace Controle_Financeiro.Controllers
     {
         private ControleFinanceiroContext _context;
         private IMapper _mapper;
+        private DespesaService _despesaService;
 
-        public DespesaController(ControleFinanceiroContext context, IMapper mapper)
+        public DespesaController(ControleFinanceiroContext context, IMapper mapper, DespesaService despesaService)
         {
             _context = context;
             _mapper = mapper;
+            _despesaService = despesaService;
         }
 
         [HttpPost]
         public IActionResult AdicionaDespesa([FromBody] CreateDespesaDto despesaDto)
         {
-            var despesa = _mapper.Map<Despesa>(despesaDto);
-            var tentativa = _context.Tb_Despesas.Where(p => p.Descricao_Despesa == despesa.Descricao_Despesa &&
-            p.Data_Despesa.Month == despesa.Data_Despesa.Month);
-            if (tentativa.Count() == 0)
-            {
-                var cat = RetornaCategoria(despesa.NomeCategoria);
-                despesa.NomeCategoria = cat;
-                _context.Tb_Despesas.Add(despesa);
-                _context.SaveChanges();
-                return Ok("Despesa adicionada com sucesso!");
-            }
-            else
-            {
-                return BadRequest("Já foi registrado essa Despesa!");
-            }
+            _despesaService.Cadastra(despesaDto);
+            return Ok("Despesa adicionada com sucesso!");
 
         }
         [HttpGet]
