@@ -5,11 +5,14 @@ using Controle_Financeiro.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Controle_Financeiro.Services.DespesaService;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Controle_Financeiro.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
+    
     public class DespesaController : ControllerBase
     {
         
@@ -21,6 +24,7 @@ namespace Controle_Financeiro.Controllers
         }
 
         [HttpPost]
+        
         public IActionResult AdicionaDespesa([FromBody] CreateDespesaDto despesaDto)
         {
             _despesaService.Cadastra(despesaDto);

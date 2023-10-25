@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "/rn/TR+antX8Vn5qUeOyeQHl77JXMqSRctfIihaEUQLSkDkoPscVedtxtoqlVmbEGInRoLUjlH0hNvaxzLA5rw==",
+  "dgSpecHash": "q5ipYrmVKUq2z+c7Sqkyv+c/SNaeeUBTPCfYVNp9caDXz4zymvSmq4agxcfK9eKTLR33rXYV1EUV52gkVL75rg==",
   "success": true,
   "projectFilePath": "C:\\Users\\Joao\\Desktop\\Projetos\\ALURA_CHALLENGES\\Controle_Financeiro\\Controle_Financeiro.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Joao\\.nuget\\packages\\automapper\\12.0.1\\automapper.12.0.1.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
+    "C:\\Users\\Joao\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\6.0.14\\microsoft.aspnetcore.authentication.jwtbearer.6.0.14.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\6.0.14\\microsoft.aspnetcore.cryptography.internal.6.0.14.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\6.0.14\\microsoft.aspnetcore.cryptography.keyderivation.6.0.14.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.aspnetcore.identity.entityframeworkcore\\6.0.14\\microsoft.aspnetcore.identity.entityframeworkcore.6.0.14.nupkg.sha512",
@@ -35,6 +36,8 @@
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.abstractions\\6.27.0\\microsoft.identitymodel.abstractions.6.27.0.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\6.27.0\\microsoft.identitymodel.jsonwebtokens.6.27.0.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.logging\\6.27.0\\microsoft.identitymodel.logging.6.27.0.nupkg.sha512",
+    "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.protocols\\6.10.0\\microsoft.identitymodel.protocols.6.10.0.nupkg.sha512",
+    "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\6.10.0\\microsoft.identitymodel.protocols.openidconnect.6.10.0.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.identitymodel.tokens\\6.27.0\\microsoft.identitymodel.tokens.6.27.0.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Users\\Joao\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",

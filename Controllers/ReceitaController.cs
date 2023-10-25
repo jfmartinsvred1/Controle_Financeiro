@@ -2,6 +2,7 @@
 using Controle_Financeiro.Data;
 using Controle_Financeiro.Data.DTOS;
 using Controle_Financeiro.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -9,6 +10,7 @@ namespace Controle_Financeiro.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+    [Authorize]
     public class ReceitaController:ControllerBase
     {
         private ControleFinanceiroContext _context;

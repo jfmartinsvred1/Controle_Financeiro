@@ -12,7 +12,7 @@ namespace Controle_Financeiro.Services.TokenService
         {
             Claim[] claims = new Claim[]
             {
-                new Claim("id",usuario.Id),
+                new Claim(ClaimTypes.NameIdentifier,usuario.Id),
                 new Claim("username",usuario.UserName),
                 new Claim(ClaimTypes.DateOfBirth,usuario.DataNascimento.ToString())
             };
